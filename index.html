@@ -127,14 +127,14 @@
         
         /* 題目樣式 */
         .question-title {
-            font-size: 32px; /* 從 24px 放大 */
+            font-size: 32px; 
             margin-bottom: 25px;
             font-weight: bold;
             line-height: 1.5;
         }
         .question-img {
             max-width: 100%;
-            max-height: 300px; /* 圖片最大高度稍微放寬 */
+            max-height: 300px; 
             border-radius: 10px;
             margin-bottom: 25px;
             display: none;
@@ -142,15 +142,15 @@
         .options-container {
             display: flex;
             flex-direction: column;
-            gap: 20px; /* 選項之間的間距加大 */
+            gap: 20px; 
         }
         .option-btn {
             background-color: white;
-            border: 3px solid var(--btn-color); /* 邊框加粗 */
+            border: 3px solid var(--btn-color); 
             color: var(--text-color);
-            padding: 20px; /* 內距加大，讓按鈕變厚 */
+            padding: 20px; 
             border-radius: 12px;
-            font-size: 24px; /* 從 16px 放大 */
+            font-size: 24px; 
             cursor: pointer;
             transition: 0.2s;
             text-align: left;
@@ -168,18 +168,18 @@
 
         /* 回饋樣式 */
         .feedback-icon { 
-            font-size: 120px; /* 從 80px 放大 */
+            font-size: 120px; 
             margin-bottom: 15px; 
         }
         .correct { color: #4ecdc4; }
         .incorrect { color: #ff6b6b; }
         
         #r-title {
-            font-size: 42px; /* 答對/答錯的標題放大 */
+            font-size: 42px; 
             margin: 15px 0;
         }
         #r-desc {
-            font-size: 26px; /* 說明文字放大 */
+            font-size: 26px; 
             line-height: 1.5;
             margin-bottom: 40px;
             font-weight: bold;
@@ -212,7 +212,6 @@
     </div>
 
     <div id="view-question" class="view">
-        <!-- 移除了原本 inline 的 style，交給 css 控制 -->
         <h2 id="q-number"></h2>
         <div id="q-title" class="question-title"></div>
         <img id="q-img" class="question-img" src="" alt="題目圖片">
@@ -223,9 +222,7 @@
     <div id="view-result" class="view">
         <div id="r-icon" class="feedback-icon"></div>
         <h2 id="r-title"></h2>
-        <!-- 移除了原本 inline 的 font-size: 18px -->
         <p id="r-desc"></p>
-        <!-- 下方的按鈕也加上一點 inline style 讓它跟著變大 -->
         <button class="btn" style="font-size: 24px; padding: 15px 40px;" onclick="goToWheel()">回到轉盤</button>
     </div>
 </div>
@@ -286,7 +283,7 @@
         const btn = document.getElementById('spin-btn');
         btn.disabled = true;
         
-        // 隨機旋轉圈數 (至少 5 圈) + 隨機角度
+        // 隨機旋轉圈數 + 隨機角度
         const randomSpins = 5 + Math.random() * 5;
         const randomDeg = Math.floor(Math.random() * 360);
         currentRotation += (randomSpins * 360) + randomDeg;
@@ -296,7 +293,6 @@
         // 動畫結束後計算結果
         setTimeout(() => {
             btn.disabled = false;
-            // 由於指針在 0 度（正上方），計算轉盤停下時正上方對應的扇形
             const normalizedDeg = (360 - (currentRotation % 360)) % 360;
             const winningIndex = Math.floor(normalizedDeg / degPerSegment);
             loadQuestion(winningIndex);
